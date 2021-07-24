@@ -33,14 +33,81 @@ let personalMovieDB = {
     privat: false
 }
 
-let obj = {
-    a: prompt("Один из последних просмотренных фильмов?", "logan"),
-    b: +prompt('На сколько оцените его?', "10"),
-    c: prompt("Один из последних просмотренных фильмов?", "spider-man"),
-    d: +prompt('На сколько оцените его?', "10"),
-}
+//let obj = {
+//    a: prompt("Один из последних просмотренных фильмов?", "logan"),
+//    b: +prompt('На сколько оцените его?', "10"),
+//    c: prompt("Один из последних просмотренных фильмов?", "spider-man"),
+//    d: +prompt('На сколько оцените его?', "10"),
+//}
+//
+//personalMovieDB.movies[obj.a] = obj.b;
+//personalMovieDB.movies[obj.c] = obj.d;
+//
+//console.log(personalMovieDB);
 
-personalMovieDB.movies[obj.a] = obj.b;
-personalMovieDB.movies[obj.c] = obj.d;
+//for (let i = 0; i < 2; i++) {
+//    let a = prompt("Один из последних просмотренных фильмов?", "logan"),
+//        b = +prompt('На сколько оцените его?', "10");
+//
+//    if (!a || !b || a == "" || b == "" || a.length > 50) {
+//        alert("Повторите попытку");
+//        i--;
+//    } else {
+//        alert("Готово");
+//        personalMovieDB.movies[a] = b;
+//    }
+//    if (i > 0 && Object.keys(personalMovieDB.movies).length < 2) {
+//        alert("Вы ввели тот же фильм, введите другой");
+//        i--;
+//    }
+//}
+
+//let i = 0;
+//while (i < 2) {
+//    let a = prompt("Один из последних просмотренных фильмов?", "logan"),
+//        b = +prompt('На сколько оцените его?', "10");
+//
+//    if (a !== null && b !== null && a !== "" && b !== "" && a.length < 50 && b > 0) {
+//        personalMovieDB.movies[a] = b;
+//        alert("Good.");
+//        if (i > 0 && Object.keys(personalMovieDB.movies).length < 2) {
+//            alert("You entered the same movie. Try again.");
+//            i--;
+//        }
+//        i++;
+//    } else {
+//        alert("You made a mistake. Try again.");
+//        i--;
+//    }
+//}
+
+let i = 0;
+do {
+    let a = prompt("Один из последних просмотренных фильмов?", "logan"),
+        b = +prompt('На сколько оцените его?', "10");
+
+    if (a !== null && b !== null && a !== "" && b !== "" && a.length < 50 && b > 0) {
+        personalMovieDB.movies[a] = b;
+        alert("Good");
+        if (i > 0 && Object.keys(personalMovieDB.movies).length < 2) {
+            alert("You entered the same movie.Try again");
+            i--;
+        }
+        i++
+    } else {
+        alert("You made mistake. Try again.");
+        i--;
+    }
+} while (i < 2);
+
+if (personalMovieDB.count > 0 && personalMovieDB.count < 10) {
+    alert("Мало");
+} else if (personalMovieDB.count > 10 && personalMovieDB.count < 30) {
+    alert("Вы классик");
+} else if (personalMovieDB.count > 30) {
+    alert("Вы киноман");
+} else {
+    alert("Ошибка");
+}
 
 console.log(personalMovieDB);
