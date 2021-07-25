@@ -81,33 +81,47 @@ let personalMovieDB = {
 //    }
 //}
 
-let i = 0;
-do {
-    let a = prompt("Один из последних просмотренных фильмов?", "logan"),
-        b = +prompt('На сколько оцените его?', "10");
 
-    if (a !== null && b !== null && a !== "" && b !== "" && a.length < 50 && b > 0) {
-        personalMovieDB.movies[a] = b;
-        alert("Good");
-        if (i > 0 && Object.keys(personalMovieDB.movies).length < 2) {
-            alert("You entered the same movie.Try again");
+let check = () => {
+    let i = 0;
+    do {
+        let a = prompt("Один из последних просмотренных фильмов?", "logan"),
+            b = +prompt('На сколько оцените его?', "10");
+
+        if (a !== null && b !== null && a !== "" && b !== "" && a.length < 50 && b > 0) {
+            personalMovieDB.movies[a] = b;
+            alert("Good");
+            if (i > 0 && Object.keys(personalMovieDB.movies).length < 2) {
+                alert("You entered the same movie.Try again");
+                i--;
+            }
+            i++
+        } else {
+            alert("You made mistake. Try again.");
             i--;
         }
-        i++
-    } else {
-        alert("You made mistake. Try again.");
-        i--;
-    }
-} while (i < 2);
-
-if (personalMovieDB.count > 0 && personalMovieDB.count < 10) {
-    alert("Мало");
-} else if (personalMovieDB.count > 10 && personalMovieDB.count < 30) {
-    alert("Вы классик");
-} else if (personalMovieDB.count > 30) {
-    alert("Вы киноман");
-} else {
-    alert("Ошибка");
+    } while (i < 2);
 }
+
+let checkPersonLvl = () => {
+    if (personalMovieDB.count > 0 && personalMovieDB.count < 10) {
+        alert("Мало");
+    } else if (personalMovieDB.count > 10 && personalMovieDB.count < 30) {
+        alert("Вы классик");
+    } else if (personalMovieDB.count > 30) {
+        alert("Вы киноман");
+    } else {
+        alert("Ошибка");
+    }
+}
+
+let genres = () => {
+    for (let i = 0; i < 3; ++i) {
+        let question = prompt(`Ваш любимый жанр под номером ${i + 1}`, "Ужас");
+        personalMovieDB.genres[i] = question;
+    }
+}
+
+genres();
 
 console.log(personalMovieDB);
